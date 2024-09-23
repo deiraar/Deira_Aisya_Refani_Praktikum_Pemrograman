@@ -4,7 +4,7 @@ multiplication_table : multiplication_table.o
 
 # Target to compile the object file
 multiplication_table.o : multiplication_table.cpp
-	g ++ -c multiplication_table.cpp -o multiplication_table.o
+	g++ -c multiplication_table.cpp -o multiplication_table.o
 
 # Target to run the program
 run : multiplication_table
