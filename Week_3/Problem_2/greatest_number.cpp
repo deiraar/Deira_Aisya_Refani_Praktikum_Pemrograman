@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <fstream> // add txt file
 
 using namespace std;
 
@@ -8,7 +9,20 @@ using namespace std;
 
 int main()
 {
+    ofstream textFile("text.txt"); // make a txt file to save output
+
+    if (!textFile) 
+    {
+        cout << "Error: Could not open text.txt" << endl;
+        return 1;
+    }
+
     // Header
+    cout << "--------------------------------" << endl;
+    cout << "Find The Greatest Number Program" << endl;
+    cout << "--------------------------------" << endl;
+
+    // header to testfile
     cout << "--------------------------------" << endl;
     cout << "Find The Greatest Number Program" << endl;
     cout << "--------------------------------" << endl;

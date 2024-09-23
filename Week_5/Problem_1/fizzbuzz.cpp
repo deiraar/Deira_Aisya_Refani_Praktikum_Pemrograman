@@ -2,35 +2,38 @@
 #include<vector>
 #include<string>
 
+using namespace std;
+
 int main()
 {
-    // header
-    std:: cout << "----------------------------" << endl;
-    std:: cout << "   FizzBuzz with Vectors" << endl;
-    std:: cout << "----------------------------" << endl;
+    // Header
+    cout << "----------------------------" << endl;
+    cout << "   FizzBuzz with Vectors" << endl;
+    cout << "----------------------------" << endl;
 
-    std:: vector<std:: string> results;
+    vector<string> results; // Vector to store the results
 
-    for (int i=1; i<=100; i++)
-    {
-        if(i % 3 == 0)
-        {
-            results = "Fizz";
-        }
-        else if(i % 5 == 0)
-        {
-            
-        }
-        else if(i % 5 == 0 && i % 3 == 0) 
-        {
-            
+    // Loop from 1 to 100
+    for (int i = 1; i <= 100; i++) {
+        // Check for multiples of 3 and 5
+        if (i % 3 == 0 && i % 5 == 0) {
+            results.push_back("FizzBuzz");
+        } else if (i % 3 == 0) {
+            results.push_back("Fizz");
+        } else if (i % 5 == 0) {
+            results.push_back("Buzz");
+        } else {
+            results.push_back(to_string(i)); // Convert number to string
         }
     }
 
-    std:: cout << results << endl;
+    // Print the results
+    for (const auto& result : results) {
+        cout << result << endl;
+    }
 
-    // footer
+    // Footer
     cout << "----------------------------" << endl;
-    
+
     return 0;
 }

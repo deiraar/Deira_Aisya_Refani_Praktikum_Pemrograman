@@ -1,0 +1,11 @@
+
+----------------------------
+Payslip for Employee Program
+----------------------------
+Name: Deira Aisya
+Gross Salary: Rp15000000
+Tax (20%): Rp3000000
+Installment: Rp200000
+Insurance: Rp150000
+Net Salary: Rp11650000
+----------------------------

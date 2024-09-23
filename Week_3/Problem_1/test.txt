@@ -1,0 +1,10 @@
+--------------------------
+Quadratic Equation Program
+--------------------------
+Please input a, b, c below here
+a = 1
+b = 8
+c = 10
+There are two distinct real roots
+They are x1 = -1.55051 and x2 = -6.44949
+--------------------------
