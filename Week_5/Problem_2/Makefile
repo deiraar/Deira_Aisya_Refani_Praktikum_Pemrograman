@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-reverse_array : reverse_array.o
-	g++ reverse_array.o -o reverse_array
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = reverse_array
+TARGETTEST = reverse_array_test
+SRC = reverse_array.cpp
+SRCTEST = reverse_array_test.cpp
 
-# Target to compile the object file
-reverse_array.o : reverse_array.cpp
-	g++ -c reverse_array.cpp -o reverse_array.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : reverse_array
-	./reverse_array
+# Compile the reverse_array.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled files
-clean :
-	rm -f reverse_array.o reverse_array
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test

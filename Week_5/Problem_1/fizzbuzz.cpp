@@ -2,7 +2,7 @@
 #include<vector>
 #include<string>
 
-using namespace std;
+using namespace std; // call std first
 
 int main()
 {
@@ -28,12 +28,13 @@ int main()
     }
 
     // Print the results
-    for (const auto& result : results) {
-        cout << result << endl;
+    for(int i=1; i<=100; i++)
+    {
+        cout << results[i] << endl;
     }
 
     // Footer
     cout << "----------------------------" << endl;
 
     return 0;
-}
+} 

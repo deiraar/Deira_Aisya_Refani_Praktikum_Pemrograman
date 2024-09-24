@@ -1,10 +1,6 @@
---------------------------
-Quadratic Equation Program
---------------------------
-Please input a, b, c below here
-a = 4
-b = -5
-c = -12
-There are two distinct real roots
-They are x1 = 2.46637 and x2 = -1.21636
---------------------------
+4 -5 -12
+There are two distinct real roots: x1 = 2.466365, x2 = -1.216365
+1 2 1
+There is exactly one real root: x = -1.000000
+1 -2 5
+There are no real roots.

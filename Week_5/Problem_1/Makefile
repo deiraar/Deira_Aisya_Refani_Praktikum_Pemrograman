@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-fizzbuzz : fizzbuzz.o
-	g++ fizzbuzz.o -o fizzbuzz
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = fizzbuzz
+TARGETTEST = fizzbuzz_test
+SRC = fizzbuzz.cpp
+SRCTEST = fizzbuzz_test.cpp
 
-# Target to compile the object file
-fizzbuzz.o : greatest_number.cpp
-	g++ -c fizzbuzz.cpp -o fizzbuzz.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : fizzbuzz
-	./fizzbuzz
+# Compile the fizzbuzz.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled files
-clean :
-	rm -f fizzbuzz.o fizzbuzz
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test

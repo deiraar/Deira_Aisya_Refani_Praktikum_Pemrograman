@@ -1,50 +1,29 @@
-#include <iostream>
-#include <fstream> // add txt file
+#include<iostream>
 
 using namespace std;
 
 int main()
 {
-    ofstream testFile("test.txt"); // make a txt file to save output
+    // header
+    cout << "-----------------------------" << endl;
+    cout << "Sum of Natural Numbers Program" << endl;
+    cout << "-----------------------------" << endl;
 
-    if (!testFile) 
+    int n; // decalre an integer called n
+
+    cout << "Input: "; cin >> n; // input the integer
+
+    cout << "Output: " << endl;
+
+    int sum = 0; // declare an integer called sum with value 0
+
+    for(int i=1; i<=n; i++) // looping for 1 until n
     {
-        cout << "Error: Could not open test.txt" << endl;
-        return 1;
+        sum += i; // sum i with i from 1 to n
     }
 
-    // header on testfile
-    testFile << "-----------------------------" << endl;
-    testFile << "Sum of Natural Number Program" << endl;
-    testFile << "-----------------------------" << endl;
-
-    // header on output
-    cout << "-----------------------------" << endl;
-    cout << "Sum of Natural Number Program" << endl;
-    cout << "-----------------------------" << endl;
-    
-    int n; // declare an integer called n
-
-    cout << "Input: "; // input an integer to n
-    testFile << "Input: ";
-    cin >> n;
-
-    cout << "Output: " ;
-    testFile << "Output: " << endl;
-
-    int sum = 0; // declare an integer called sum that has value = 0
-
-    for (int i = 1; i <= n; i++)
-    {
-        sum += i; // sum all for 1 to n
-    }
-
-    cout << "Sum = " << sum << endl;
-    testFile << "Sum = " << sum << endl; // print output
+    cout << "Sum = " << sum << endl; // cout sum
 
     // footer
     cout << "-----------------------------" << endl;
-    testFile << "-----------------------------" << endl;
-
-    return 0; // The file will be automatically closed here.
 }

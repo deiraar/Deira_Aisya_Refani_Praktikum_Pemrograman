@@ -3,18 +3,11 @@
 
 using namespace std;
 
-vector<int> reverseVector(const vector<int>& input) {
-    vector<int> reversed;
-    for (int i = input.size() - 1; i >= 0; i--) {
-        reversed.push_back(input[i]);
-    }
-    return reversed;
-}
-
-int main() {
+int main() 
+{
     // Header
     cout << "-----------------------------" << endl;
-    cout << "  Reverese An Array Program" << endl;
+    cout << "  Reverse An Array Program" << endl;
     cout << "-----------------------------" << endl;
 
     vector<int> vec;
@@ -31,19 +24,24 @@ int main() {
         vec.push_back(value);
     }
 
-    // Reverse the vector
-    vector<int> reversedVec = reverseVector(vec);
+    // Reverse the vector by swapping from the farthest
+    // Example
+    // 1 2 3 4 5
+    // 5 2 3 4 1
+    // 5 4 3 2 1
+    for (int i = 0; i < n / 2; ++i) {
+        swap(vec[i], vec[n - 1 - i]);
+    }
 
-    // Print the reversed vector
+    // Print the reversed vector using a for loop with index
     cout << "Reversed vector: ";
-    for (int num : reversedVec) {
-        cout << num << " ";
+    for (size_t i = 0; i < vec.size(); ++i) {
+        cout << vec[i] << " ";
     }
     cout << endl;
 
     // Footer
     cout << "-----------------------------" << endl;
-
 
     return 0;
 }

@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-multiplication_table : sum_of_natural_numbers.o
-	g++ sum_of_natural_numbers.o -o sum_of_natural_numbers
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = sum_of_natural_numbers
+TARGETTEST = sum_of_natural_numbers_test
+SRC = sum_of_natural_numbers.cpp
+SRCTEST = sum_of_natural_numbers_test.cpp
 
-# Target to compile the object file
-multiplication_table.o : multiplication_table.cpp
-	g++ -c sum_of_natural_numbers.cpp -o sum_of_natural_numbers.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : sum_of_natural_numbers
-	./sum_of_natural_numbers
+# Compile the sum_of_natural_numbers.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled cd Week_4
-clean :
-	rm -f sum_of_natural_numbers.o sum_of_natural_numbers
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test

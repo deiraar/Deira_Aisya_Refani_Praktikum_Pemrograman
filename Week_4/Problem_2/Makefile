@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-multiplication_table : multiplication_table.o
-	g++ multiplication_table.o -o multiplication_table
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = multiplication_table
+TARGETTEST = multiplication_table_test
+SRC = multiplication_table.cpp
+SRCTEST = multiplication_table_test.cpp
 
-# Target to compile the object file
-multiplication_table.o : multiplication_table.cpp
-	g++ -c multiplication_table.cpp -o multiplication_table.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : multiplication_table
-	./multiplication_table
+# Compile the multiplication_table.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled files
-clean :
-	rm -f multiplication_table.o multiplication_table
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test

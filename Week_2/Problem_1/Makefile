@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-payslip : payslip.o
-	g++ payslip.o -o payslip
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = payslip
+TARGETTEST = payslip_test
+SRC = payslip.cpp
+SRCTEST = payslip_test.cpp
 
-# Target to compile the object file
-payslip.o : payslip.cpp
-	g++ -c payslip.cpp -o payslip.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : payslip
-	./payslip
+# Compile the payslip.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled files
-clean :
-	rm -f payslip.o payslip
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test

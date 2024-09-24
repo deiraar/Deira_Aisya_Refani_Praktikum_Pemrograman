@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-greatest_number : greatest_number.o
-	g++ greatest_number.o -o greatest_number
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = greatest_number
+TARGETTEST = greatest_number_test
+SRC = greatest_number.cpp
+SRCTEST = greatest_number_test.cpp
 
-# Target to compile the object file
-greatest_number.o : greatest_number.cpp
-	g++ -c greatest_number.cpp -o greatest_number.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : greatest_number
-	./greatest_number
+# Compile the greatest_number.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled files
-clean :
-	rm -f greatest_number.o greatest_number
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test

@@ -1,15 +1,32 @@
-# Target to compile the C++ program
-payslip : quadratic_equation.o
-	g++ quadratic_equation.o -o quadratic_equation
+# Variables
+CXX = g++
+CXXFLAGS = -Wall
+TARGET = quadratic_equation
+TARGETTEST = quadratic_equation_test
+SRC = quadratic_equation.cpp
+SRCTEST = quadratic_equation_test.cpp
 
-# Target to compile the object file
-payslip.o : quadratic_equation.cpp
-	g++ -c quadratic_equation.cpp -o quadratic_equation.o
+# Default target: compile the program
+all: $(TARGET)
 
-# Target to run the program
-run : quadratic_equation
-	./quadratic_equation
+# Compile the quadratic_equation.cpp
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
-# Target to clean up compiled files
-clean :
-	rm -f quadratic_equation.o quadratic_equation
+# Run the program
+run: $(TARGET)
+	./$(TARGET)
+
+# Clean up the compiled files
+clean:
+	rm -f $(TARGET)
+	rm -f $(TARGETTEST)
+
+test: ${TARGETTEST}
+
+$(TARGETTEST): $(SRCTEST)
+	$(CXX) $(CXXFLAGS) -o $(TARGETTEST) $(SRCTEST)
+	./$(TARGETTEST)
+
+# Phony targets to avoid conflicts
+.PHONY: all clean test
