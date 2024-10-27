@@ -27,6 +27,6 @@ int gcd(int a, int b) // GCD function recursive
     }
     else
     {
-        return gcd(b,a&b); // Else, it will do reccursion in the perogram until the right side of the function is 0
+        return gcd(b, a % b); // Else, it will do reccursion in the perogram until the right side of the function is 0
     }
 }

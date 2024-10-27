@@ -2,9 +2,9 @@
 CXX = g++
 CXXFLAGS = -Wall
 TARGET = gcd
-TARGETTEST = TARGET = gcd_test
-SRC = TARGET = gcd.cpp
-SRCTEST = TARGET = gcd_test.cpp
+TARGETTEST = gcd_test
+SRC = gcd.cpp
+SRCTEST = gcd_test.cpp
 
 # Default target: compile the program
 all: $(TARGET)

@@ -2,9 +2,9 @@
 CXX = g++
 CXXFLAGS = -Wall
 TARGET = factorial
-TARGETTEST = TARGET = factorial_test
-SRC = TARGET = factorial.cpp
-SRCTEST = TARGET = factorial_test.cpp
+TARGETTEST = factorial_test
+SRC = factorial.cpp
+SRCTEST = factorial_test.cpp
 
 # Default target: compile the program
 all: $(TARGET)
